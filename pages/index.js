@@ -92,9 +92,9 @@ export default function Home({pokemon}) {
           <li className={styles.cardItems} >
 
             <Image className={styles.images} src={`https://jherr-pokemon.s3.us-west-1.amazonaws.com/${image}`}
-              width="100" height="100"
+              width="128" height="119"
               alt={`${name}`} />
-            <h3>{`${id}. ${name}`}</h3>
+            <h2>{`${id}. ${name}`}</h2>
           </li>
 
         </a>
