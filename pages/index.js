@@ -94,7 +94,7 @@ export default function Home({pokemon}) {
             <Image className={styles.images} src={`https://jherr-pokemon.s3.us-west-1.amazonaws.com/${image}`}
               width="128" height="119"
               alt={`${name}`} />
-            <h2>{`${id}. ${name}`}</h2>
+            <h3>{`${id}. ${name}`}</h3>
           </li>
 
         </a>
@@ -112,7 +112,7 @@ export default function Home({pokemon}) {
         <code>audio</code> element.
       </audio> */}
 
-      <h1>Hello Pokemon</h1>
+      <h2>Hello Pokemon</h2>
       <main className={styles.main}>
         <ul className={styles.cardContainer}>
           {pokemon.map((poke, index) => (
