@@ -1,9 +1,8 @@
 import React from 'react'
-import styles from '../../styles/Poke.module.css'
+import s from '../../styles/Poke.module.css'
 import { MdKeyboardBackspace } from 'react-icons/md'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
-import Link from 'next/link'
 
 
 
@@ -55,11 +54,11 @@ export default function Single({poke}) {
 
   return (
     <>
-      <div className={styles.viewContainer} >
-        <MdKeyboardBackspace onClick={()=>window.history.back()} className={styles.backIcon} />
+      <div className={s.viewContainer} >
+        <MdKeyboardBackspace onClick={()=>window.history.back()} className={s.backIcon} />
         
-        <Image priority={true} className={styles.image} src={`https://jherr-pokemon.s3.us-west-1.amazonaws.com/${poke.image}`}
-        width="300" height="300" // width = 100 no delay
+        <Image priority={true} className={s.image} src={`https://jherr-pokemon.s3.us-west-1.amazonaws.com/${poke.image}`}
+        width="300" height="300" layout='fixed' // width = 100 no delay
         placeholder='blur'
         alt={`${poke.name}`} />
 

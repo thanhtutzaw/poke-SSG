@@ -14,6 +14,10 @@ module.exports = {
     domains: ['jherr-pokemon.s3.us-west-1.amazonaws.com'],
 
   },
+  i18n: {
+    locales: ['en'],
+    defaultLocale: 'en',
+  },
   
 }
 

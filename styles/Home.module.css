@@ -74,9 +74,17 @@
   /* max-width: 300px; */
   /* max-width: 200px; */
 }
-/* .images{
-  max-width: 100%;
-} */
+.images{
+  /* max-width: 100%; */
+  /* aspect-ratio: attr(width) / attr(height); */
+  /* height: auto !important;
+  max-width: 100% !important; */
+
+  object-fit: contain;
+width     : 100% !important;
+position  : relative !important;
+height    : unset !important;
+}
 .card:hover,
 .card:focus,
 .card:active {

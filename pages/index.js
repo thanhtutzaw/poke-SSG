@@ -2,7 +2,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link';
 import { useEffect, useState } from 'react'
-import styles from '../styles/Home.module.css'
+import s from '../styles/Home.module.css'
 // import {audio} from '/025-kanto-pikachu.mp3';
 
 // export async function getStaticProps() {
@@ -88,15 +88,14 @@ export default function Home({pokemon}) {
     return (
       <>
       <Link  prefetch={true}  href={`/pokemon/${id}`}>
-      <a className={styles.card}>
-          <li className={styles.cardItems} >
+      <a className={s.card}>
+          <li className={s.cardItems} >
 
-            <Image className={styles.images} src={`https://jherr-pokemon.s3.us-west-1.amazonaws.com/${image}`}
-              width="128" height="119"
+            <Image className={s.images} src={`https://jherr-pokemon.s3.us-west-1.amazonaws.com/${image}`}
+                width="200" height="200" layout="fixed"
               alt={`${name}`} />
             <h3>{`${id}. ${name}`}</h3>
           </li>
-
         </a>
         </Link>
       </>
@@ -104,7 +103,7 @@ export default function Home({pokemon}) {
   }
 
   return (
-    <div className={styles.container}>
+    <div className={s.container}>
      
       {/* <audio id="source"
         src="/025-kanto-pikachu.mp3">
@@ -113,8 +112,8 @@ export default function Home({pokemon}) {
       </audio> */}
 
       <h2>Hello Pokemon</h2>
-      <main className={styles.main}>
-        <ul className={styles.cardContainer}>
+      <main className={s.main}>
+        <ul className={s.cardContainer}>
           {pokemon.map((poke, index) => (
             <Card key={poke.id} {...poke} />
           ))}
