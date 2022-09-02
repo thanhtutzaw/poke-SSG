@@ -6,7 +6,7 @@ import { useRouter } from 'next/router'
 
 
 
-export async function getStaticPaths(){
+export async function getStaticPaths() {
   // const resp = await fetch("https://jherr-pokemon.s3.us-west-1.amazonaws.com/index.json")
   // const data = await resp.json()
   // const pokemon = data.filter(entry => entry)
@@ -21,58 +21,66 @@ export async function getStaticPaths(){
   const pokemon = data.filter(entry => entry)
     .slice(0, 80);
   const paths = pokemon.map((poke) => {
-    return{
-      params: {id: poke.id.toString()}
+    return {
+      params: { name: poke.name.toLowerCase() }
     }
   })
   return {
-    paths ,
-    fallback : true
+    paths,
+    fallback: true
   }
 }
 
-export async function getStaticProps({params}) {
-  const resp = await fetch(`https://jherr-pokemon.s3.us-west-1.amazonaws.com/pokemon/${params.id}.json`)
+export async function getStaticProps({ params }) {
+  const resp = await fetch("https://jherr-pokemon.s3.us-west-1.amazonaws.com/index.json")
+  const d = await resp.json()
+  const pokemon = d.filter(entry => entry)
+    .slice(0, 80);
+  const findObj = pokemon.find(poke => poke.name.toLowerCase() == params.name)
+
+  const data = await fetch(`https://jherr-pokemon.s3.us-west-1.amazonaws.com/pokemon/${findObj.id}.json`)
+  const poke = await data.json()
+
   // const data = await resp.json()
   // const poke = data.filter(entry => entry)
   //   .slice(0, 80);
 
   // const poke = pokemon.find(poke =>poke.id == id)
   return {
-    props: { poke : await resp.json() }
+    props: { poke }
   }
 
 }
 
 
-export default function Single({poke}) {
+export default function Single({ poke }) {
   const router = useRouter();
-  if(router.isFallback){
+  if (router.isFallback) {
     return <div>Loading...</div>
   }
-  if(!poke) return null;
-
+  if (!poke) return null;
+  console.log(typeof (poke), poke)
   return (
     <>
       <div className={s.viewContainer} >
-        <MdKeyboardBackspace onClick={()=>window.history.back()} className={s.backIcon} />
-        
-        <Image priority={true} className={s.image} src={`https://jherr-pokemon.s3.us-west-1.amazonaws.com/${poke.image}`}
-        width="300" height="300" layout='fixed' // width = 100 no delay
-        placeholder='blur'
-        alt={`${poke.name}`} />
+        <MdKeyboardBackspace onClick={() => window.history.back()} className={s.backIcon} />
 
+        <Image priority={true} className={s.image} src={`https://jherr-pokemon.s3.us-west-1.amazonaws.com/${poke.image}`}
+          width="300" height="300" layout='fixed' // width = 100 no delay
+          // placeholder='blur'
+          alt={`${poke.name}`} />
+
+        <div className={s.details}>
+          <h2>{poke.name}</h2>
+          <h3>Type - {poke.type}</h3>
+        </div>
 
 
 
 
         {/* {JSON.stringify(poke)} */}
-        <div >
-          <h2>{poke.name}</h2>
-          <h3>Type - {poke.type}</h3>
-        </div>
         {/* <p>{poke.id}. {poke.name}</p> */}
-        
+
       </div>
     </>
   )
