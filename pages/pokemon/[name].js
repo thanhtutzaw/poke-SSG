@@ -1,6 +1,7 @@
 import React from 'react'
 import s from '../../styles/Poke.module.css'
 import { MdKeyboardBackspace } from 'react-icons/md'
+import { MdOutlineArrowBackIosNew } from 'react-icons/md'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 
@@ -44,7 +45,11 @@ export default function Single({ poke }) {
   return (
     <>
       <div className={s.viewContainer} >
-        <MdKeyboardBackspace onClick={() => window.history.back()} className={s.backIcon} />
+        <div className={s.backIcon} >
+        <MdOutlineArrowBackIosNew onClick={() => window.history.back()} 
+        />
+          <p style={{marginTop:"25px"}}>Back</p>
+        </div>
 
         <Image priority={true} className={s.image} src={`https://jherr-pokemon.s3.us-west-1.amazonaws.com/${poke.image}`}
           width="300" height="300" layout='fixed' // width = 100 no delay
@@ -53,7 +58,9 @@ export default function Single({ poke }) {
 
         <div className={s.details}>
           <h2>{poke.name}</h2>
-          <h3>Type - {poke.type}</h3>
+          <ul >Type - 
+            <li style={{ textTransform: 'uppercase' }}>{ poke.type}</li>
+          </ul>
         </div>
       </div>
     </>

@@ -10,12 +10,29 @@
 
 .backIcon {
     position : absolute;
-    top      : 0;
-    left     : 0;
-    transform: translate(16rem, 4rem);
-    font-size: 2rem;
+    top      : 9px;
+    left     : 17px;
+    font-size: 1.3rem;
     cursor   : pointer;
+    z-index  : 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
 }
+
+@media only screen and (max-width:620px) {
+    .viewContainer {
+        /* display: block; */
+        flex-direction: column;
+    }
+    .details h2 ,.details ul{
+    text-align: center;
+}
+
+}
+
+
 
 .image {
     object-fit    : contain;
@@ -24,6 +41,7 @@
     height        : unset !important;
     pointer-events: none;
 }
-.details{
-    max-width: 30%;
+
+.details {
+    max-width: 50%;
 }
