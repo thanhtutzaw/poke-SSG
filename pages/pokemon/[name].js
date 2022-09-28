@@ -45,8 +45,8 @@ export default function Single({ poke }) {
   return (
     <>
       <div className={s.viewContainer} >
-        <div className={s.backIcon} >
-        <MdOutlineArrowBackIosNew onClick={() => window.history.back()} 
+        <div className={s.backIcon} onClick={() => window.history.back()}>
+        <MdOutlineArrowBackIosNew  
         />
           <p style={{marginTop:"25px"}}>Back</p>
         </div>
@@ -64,5 +64,6 @@ export default function Single({ poke }) {
         </div>
       </div>
     </>
+    
   )
 }
