@@ -44,26 +44,28 @@ export default function Single({ poke }) {
   console.log(typeof (poke), poke)
   return (
     <>
-      <div className={s.viewContainer} >
-        <div className={s.backIcon} onClick={() => window.history.back()}>
-        <MdOutlineArrowBackIosNew  
-        />
-          <p style={{marginTop:"25px"}}>Back</p>
-        </div>
+      <div className={s.container}>
+        <div className={s.viewContainer} >
+          <div className={s.backIcon} onClick={() => window.history.back()}>
+            <MdOutlineArrowBackIosNew
+            />
+            <p style={{ marginTop: "25px" }}>Back</p>
+          </div>
 
-        <Image priority={true} className={s.image} src={`https://jherr-pokemon.s3.us-west-1.amazonaws.com/${poke.image}`}
-          width="300" height="300" layout='fixed' // width = 100 no delay
-          // placeholder='blur'
-          alt={`${poke.name}`} />
+          <Image priority={true} className={s.image} src={`https://jherr-pokemon.s3.us-west-1.amazonaws.com/${poke.image}`}
+            width="300" height="300" layout='fixed' // width = 100 no delay
+            // placeholder='blur'
+            alt={`${poke.name}`} />
 
-        <div className={s.details}>
-          <h2>{poke.name}</h2>
-          <ul >Type - 
-            <li style={{ textTransform: 'uppercase' }}>{ poke.type}</li>
-          </ul>
+          <div className={s.details}>
+            <h2>{poke.name}</h2>
+            <ul >Type
+              <li style={{ textTransform: 'uppercase' }}>{poke.type}</li>
+            </ul>
+          </div>
         </div>
       </div>
     </>
-    
+
   )
 }
