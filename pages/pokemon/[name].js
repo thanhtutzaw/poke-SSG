@@ -4,18 +4,7 @@ import { MdKeyboardBackspace } from 'react-icons/md'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 
-
-
 export async function getStaticPaths() {
-  // const resp = await fetch("https://jherr-pokemon.s3.us-west-1.amazonaws.com/index.json")
-  // const data = await resp.json()
-  // const pokemon = data.filter(entry => entry)
-  //   .slice(0, 80);
-
-  // const resp = await fetch("https://jherr-pokemon.s3.us-west-1.amazonaws.com/index.json")
-  // const data = await resp.json()
-  // const pokemon = data.filter(entry => entry)
-  //   .slice(0, 80);
   const resp = await fetch("https://jherr-pokemon.s3.us-west-1.amazonaws.com/index.json")
   const data = await resp.json()
   const pokemon = data.filter(entry => entry)
@@ -40,18 +29,10 @@ export async function getStaticProps({ params }) {
 
   const data = await fetch(`https://jherr-pokemon.s3.us-west-1.amazonaws.com/pokemon/${findObj.id}.json`)
   const poke = await data.json()
-
-  // const data = await resp.json()
-  // const poke = data.filter(entry => entry)
-  //   .slice(0, 80);
-
-  // const poke = pokemon.find(poke =>poke.id == id)
   return {
     props: { poke }
   }
-
 }
-
 
 export default function Single({ poke }) {
   const router = useRouter();
@@ -74,13 +55,6 @@ export default function Single({ poke }) {
           <h2>{poke.name}</h2>
           <h3>Type - {poke.type}</h3>
         </div>
-
-
-
-
-        {/* {JSON.stringify(poke)} */}
-        {/* <p>{poke.id}. {poke.name}</p> */}
-
       </div>
     </>
   )

@@ -19,16 +19,16 @@ export default function Home({ pokemon }) {
   function Card({ id, name, image }) {
     return (
       <>
-        <Link prefetch={true} href={`/pokemon/${name.toLowerCase()}`}>
-          <a className={s.card}>
-            <li className={s.cardItems} >
+        <li className={s.card} >
+          <Link prefetch={true} href={`/pokemon/${name.toLowerCase()}`}>
+            <a className={s.cardItems}>
               <Image className={s.images} src={`https://jherr-pokemon.s3.us-west-1.amazonaws.com/${image}`}
-                width="200" height="200" layout="fixed"
+                width="200" height="200" layout="fixed" priority={true}
                 alt={`${name}`} />
               <h3>{`${id}. ${name}`}</h3>
-            </li>
-          </a>
-        </Link>
+            </a>
+          </Link>
+        </li>
       </>
     )
   }
