@@ -20,13 +20,3 @@ module.exports = {
   },
   
 }
-
-
-
-// module.exports = {
-//   experimental: {
-//     scrollRestoration: true,
-//   },
-//   images: {
-//   },
-// };
