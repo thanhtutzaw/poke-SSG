@@ -75,6 +75,8 @@
     position      : relative !important;
     height        : unset !important;
     pointer-events: none;
+    user-select : none;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .details {
